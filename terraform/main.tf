@@ -16,6 +16,13 @@ resource "azurerm_resource_group" "main" {
   location = var.location
 }
 
+resource "azurerm_management_lock" "resource_group" {
+  name       = "do-not-delete"
+  scope      = azurerm_resource_group.main.id
+  lock_level = "CanNotDelete"
+  notes      = "Prevent to delete this resource group"
+}
+
 resource "azurerm_iothub" "main" {
   name                = "iot-${var.identifier}"
   resource_group_name = azurerm_resource_group.main.name
