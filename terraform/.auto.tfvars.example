@@ -1,0 +1,5 @@
+identifier="<string to identify your project>"
+location="<location>"
+iothub={
+  sku_name="<Azure IoT Hub's sku>"
+}
